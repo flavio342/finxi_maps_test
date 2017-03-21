@@ -1,3 +1,20 @@
-page-home {
+.ios, .md {
+ 
+    home-page {
+      
+      ion-title{
+          color: green !important;
+      }
 
+      .scroll-content {
+        height: 100% !important;
+      }
+ 
+      #map {
+        width: 100% !important;
+        height: 100% !important;
+      }
+ 
+    }
+ 
 }
