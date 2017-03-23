@@ -1,7 +1,17 @@
 <ion-menu [content]="sideMenu">
   <ion-content>
     <ion-list>
-    ...
+      <ion-item *ngFor="let machine of batteryMachines" (click)="goToMachine(machine)">
+        <ion-avatar item-left>
+          <img *ngIf="machine.nBatteries > (maxNBatteries/3)*2" src="./assets/images/lightning.png">
+          <img *ngIf="machine.nBatteries > (maxNBatteries/3) && machine.nBatteries <= (maxNBatteries/3)*2" src="./assets/images/lightning2.png">
+          <img *ngIf="machine.nBatteries <= (maxNBatteries/3)" src="./assets/images/lightning3.png">
+        </ion-avatar>
+        <h2>BatteryMachinhe {{machine.id}}</h2>
+        <p>{{machine.address}}</p>
+        <p>{{machine.nBatteries}} batteries</p>
+        <button (click)="deleteMachine(machine)" ion-button color="danger">Delete</button>
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>
@@ -18,7 +28,7 @@
     <ion-title>Ubenergy</ion-title>
 
     <ion-buttons end>
-      <button ion-button (click)="addMarker()">+Add Marker</button>
+      <button ion-button color="dark" outline (click)="openAddMarkerModal()"><ion-icon name="flash"> Add Machine</ion-icon></button>
     </ion-buttons>
 
   </ion-navbar>
@@ -28,10 +38,9 @@
   <div #map id="map" (touchend)="setCurrentLocation()"></div>
   <button id="current-loc-button" ion-button color="light" (click)="goToCurrentLocation()"><ion-icon name="md-locate"></ion-icon></button>
   <img id="pin-icon" src="./assets/images/pin.png" alt="">
-  <ion-card id="pac-card">
-    <ion-item>
-      <ion-label><ion-icon name="search"></ion-icon></ion-label>
-      <ion-input id="pac-input" placeholder="Enter Location..." [(ngModel)]="currentLocation"></ion-input>
-    </ion-item>
-  </ion-card>
+
+  <ion-item>
+    <ion-searchbar id="pac-input" placeholder="Enter Location..." [(ngModel)]="currentLocation" [showCancelButton]="shouldShowCancel"></ion-searchbar>
+  </ion-item>
+
 </ion-content>
