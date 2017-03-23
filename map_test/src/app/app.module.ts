@@ -4,6 +4,8 @@ import { MyApp } from './app.component';
 
 import { HomePage } from '../pages/home/home';
 
+import {ConnectivityService} from '../providers/connectivity-service'
+
 @NgModule({
   declarations: [
     MyApp,
@@ -17,6 +19,6 @@ import { HomePage } from '../pages/home/home';
     MyApp,
     HomePage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},ConnectivityService]
 })
 export class AppModule {}

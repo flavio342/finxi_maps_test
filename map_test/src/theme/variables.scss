@@ -76,3 +76,15 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+@function get-vw($target) {
+  $vw-context: (1000*.01) * 1px;
+  @return ($target/$vw-context) * 1vw;
+}
+
+$pin-width: 50px;
+$pin-heigth: 50px;
+$pin-left: 50vw - get-vw($pin-width);
+
+$loc-width: 100vw;
+$loc-left: 50vw- get-vw($loc-width/2);

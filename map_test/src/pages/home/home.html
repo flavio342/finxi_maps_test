@@ -15,15 +15,23 @@
       <ion-icon name='menu'></ion-icon>
     </button>
 
-    <ion-title id="oi">EnergyMaps</ion-title>
+    <ion-title>Ubenergy</ion-title>
 
     <ion-buttons end>
-      <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
-    </ion-buttons> 
+      <button ion-button (click)="addMarker()">+Add Marker</button>
+    </ion-buttons>
 
   </ion-navbar>
 </ion-header>
- 
+
 <ion-content>
-  <div #map id="map"></div>  
+  <div #map id="map" (touchend)="setCurrentLocation()"></div>
+  <button id="current-loc-button" ion-button color="light" (click)="goToCurrentLocation()"><ion-icon name="md-locate"></ion-icon></button>
+  <img id="pin-icon" src="./assets/images/pin.png" alt="">
+  <ion-card id="pac-card">
+    <ion-item>
+      <ion-label><ion-icon name="search"></ion-icon></ion-label>
+      <ion-input id="pac-input" placeholder="Enter Location..." [(ngModel)]="currentLocation"></ion-input>
+    </ion-item>
+  </ion-card>
 </ion-content>
